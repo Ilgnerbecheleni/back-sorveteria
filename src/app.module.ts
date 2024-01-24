@@ -5,9 +5,10 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ProdutoModule } from './produto/produto.module';
 import { VendaModule } from './venda/venda.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
-  imports: [CategoriaModule, PrismaModule, ProdutoModule, VendaModule],
+  imports: [CategoriaModule, PrismaModule, ProdutoModule, VendaModule, FilesModule],
   controllers: [AppController],
   providers: [AppService],
 })

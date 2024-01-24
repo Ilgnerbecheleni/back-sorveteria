@@ -19,6 +19,8 @@ model Produto {
   categoria              Categoria? @relation(fields: [idCategoria], references: [id])
   idCategoria            Int?
   vendas                 VendaProduto[]
+  imagem Imagem[]
+
 }
 
 model Categoria {
@@ -43,4 +45,16 @@ model VendaProduto {
   idProduto      Int
   venda          Venda   @relation(fields: [idVenda], references: [id])
   idVenda        Int
+}
+
+
+model Imagem{
+  
+  id Int  @id @default(autoincrement()) 
+  fileName String
+  contentLength Int 
+  contentType String 
+  url String
+  produto Produto? @relation(fields: [idProduto],references: [id])
+  idProduto Int?
 }
