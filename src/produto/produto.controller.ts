@@ -3,12 +3,14 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from 
 import { ProdutoService } from './produto.service';
 import { CreateProdutoDto } from './dto/create-produto.dto';
 import { UpdateProdutoDto } from './dto/update-produto.dto';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('produto')
 export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
 
   @Post()
+  
   create(@Body() createProdutoDto: CreateProdutoDto) {
     return this.produtoService.create(createProdutoDto);
   }

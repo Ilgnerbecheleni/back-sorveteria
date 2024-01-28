@@ -10,7 +10,8 @@ export class ProdutoService {
 
   async create(createProdutoDto: CreateProdutoDto): Promise<any> {
     try {
-      const categoriaExists = await this.prisma.categoria.findUnique({
+
+      const categoriaExists = await this.prisma.categoria.findFirst({
         where: { id: createProdutoDto.idCategoria },
       });
 
@@ -22,7 +23,7 @@ export class ProdutoService {
 
       return await this.prisma.produto.create({ data: createProdutoDto });
     } catch (error) {
-      throw new BadGatewayException('Erro ao criar produto');
+      throw new BadGatewayException({message:'Erro ao criar produto', error: error});
     }
   }
 
